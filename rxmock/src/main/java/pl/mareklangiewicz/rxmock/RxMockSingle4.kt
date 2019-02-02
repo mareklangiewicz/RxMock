@@ -5,6 +5,7 @@ import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.subjects.SingleSubject
+import pl.mareklangiewicz.tuplek.Quad
 
 class RxMockSingle4<A1, A2, A3, A4, T>(var invocationCheck: (A1, A2, A3, A4) -> Boolean = { _, _, _, _ -> true }) : SingleObserver<T>, Consumer<T>, (A1, A2, A3, A4) -> Single<T> {
 

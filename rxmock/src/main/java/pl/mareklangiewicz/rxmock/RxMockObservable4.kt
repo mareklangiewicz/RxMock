@@ -6,6 +6,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
+import pl.mareklangiewicz.tuplek.Quad
 
 class RxMockObservable4<A1, A2, A3, A4, T>(var invocationCheck: (A1, A2, A3, A4) -> Boolean = { _, _, _, _ -> true }) : Observer<T>, Consumer<T>, (A1, A2, A3, A4) -> Observable<T> {
 

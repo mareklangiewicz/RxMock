@@ -10,6 +10,7 @@ dependencies {
     implementation(Deps.kotlinStdlib8)
     implementation(Deps.junit)
     implementation(Deps.rxjava)
+    implementation(Deps.tuplek)
 }
 
 // Create sources Jar from main kotlin sources

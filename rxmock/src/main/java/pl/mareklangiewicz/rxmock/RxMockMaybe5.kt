@@ -5,6 +5,7 @@ import io.reactivex.MaybeObserver
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.subjects.MaybeSubject
+import pl.mareklangiewicz.tuplek.Jackson
 
 class RxMockMaybe5<A1, A2, A3, A4, A5, T>(var invocationCheck: (A1, A2, A3, A4, A5) -> Boolean = { _, _, _, _, _ -> true }) : MaybeObserver<T>, Consumer<T>, (A1, A2, A3, A4, A5) -> Maybe<T> {
 

@@ -4,6 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.CompletableSubject
+import pl.mareklangiewicz.tuplek.Jackson
 
 class RxMockCompletable5<A1, A2, A3, A4, A5>(var invocationCheck: (A1, A2, A3, A4, A5) -> Boolean = { _, _, _, _, _ -> true })
     : CompletableObserver, (A1, A2, A3, A4, A5) -> Completable {
