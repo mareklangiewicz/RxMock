@@ -4,13 +4,13 @@ plugins {
 }
 
 group = "com.github.langara.rxmock"
-version = "0.0.1"
+version = "0.0.2"
 
 dependencies {
     implementation(Deps.kotlinStdlib8)
     implementation(Deps.junit)
     implementation(Deps.rxjava)
-    implementation(Deps.tuplek)
+    api(Deps.tuplek)
 }
 
 // Create sources Jar from main kotlin sources
