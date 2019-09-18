@@ -3,10 +3,10 @@ package pl.mareklangiewicz.rxmock
 import com.jakewharton.rxrelay2.PublishRelay
 import org.junit.Test
 import org.junit.runner.RunWith
-import pl.mareklangiewicz.uspek.o
-import pl.mareklangiewicz.uspek.uspek
 import pl.mareklangiewicz.uspek.USpekRunner
 import pl.mareklangiewicz.uspek.eq
+import pl.mareklangiewicz.uspek.o
+import pl.mareklangiewicz.uspek.uspek
 import java.io.IOException
 
 @RunWith(USpekRunner::class)
