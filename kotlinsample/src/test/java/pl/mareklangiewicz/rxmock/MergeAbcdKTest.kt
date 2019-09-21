@@ -33,6 +33,22 @@ class MergeAbcdKTest {
 
                 onDisposeTests(rxMockA, rxMockB, resultT)
 
+                "On aS error" o {
+                    val error = RuntimeException("aS error")
+                    rxMockA.onError(error)
+
+                    "got aS error result" o { resultT.assertError(error) }
+                    "unsubscribe from bS" o { rxMockB.subject!!.hasObservers() eq false }
+                }
+
+                "On bS error" o {
+                    val error = RuntimeException("bS error")
+                    rxMockB.onError(error)
+
+                    "got bS error result" o { resultT.assertError(error) }
+                    "unsubscribe from aS" o { rxMockA.subject!!.hasObservers() eq false }
+                }
+
                 "On first xxx string" o {
                     rxMockA put "xxx"
 
