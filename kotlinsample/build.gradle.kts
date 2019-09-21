@@ -10,9 +10,10 @@ application {
 }
 
 dependencies {
-    implementation(Deps.kotlinStdlib)
+    implementation(Deps.kotlinStdlib8)
     implementation(Deps.rxjava)
     implementation(Deps.rxrelay)
+    implementation(Deps.abcdk)
     testImplementation(Deps.junit)
     testImplementation(Deps.uspek)
     testImplementation(project(":rxmock"))
