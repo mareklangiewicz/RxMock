@@ -32,22 +32,7 @@ class MergeAbcdKTest {
                 "no results yet" o { resultT.assertEmpty() }
 
                 onDisposeTests(rxMockA, rxMockB, resultT)
-
-                "On aS error" o {
-                    val error = RuntimeException("aS error")
-                    rxMockA.onError(error)
-
-                    "got aS error result" o { resultT.assertError(error) }
-                    "unsubscribe from bS" o { rxMockB.subject!!.hasObservers() eq false }
-                }
-
-                "On bS error" o {
-                    val error = RuntimeException("bS error")
-                    rxMockB.onError(error)
-
-                    "got bS error result" o { resultT.assertError(error) }
-                    "unsubscribe from aS" o { rxMockA.subject!!.hasObservers() eq false }
-                }
+                onErrorTests(rxMockA, rxMockB, resultT)
 
                 "On first xxx string" o {
                     rxMockA put "xxx"
@@ -60,6 +45,7 @@ class MergeAbcdKTest {
                         "got AB.B(7) result" o { resultT isNow AB.B(7) }
 
                         onDisposeTests(rxMockA, rxMockB, resultT)
+                        onErrorTests(rxMockA, rxMockB, resultT)
                     }
 
                 }
@@ -80,6 +66,7 @@ class MergeAbcdKTest {
                             "got AB.A(another)" o { resultT isNow AB.A("another") }
 
                             onDisposeTests(rxMockA, rxMockB, resultT)
+                            onErrorTests(rxMockA, rxMockB, resultT)
                         }
                     }
                 }
@@ -99,5 +86,23 @@ private fun onDisposeTests(rxMockA: RxMockObservable0<String>, rxMockB: RxMockOb
             "unsubscribe from aS" o { rxMockA.subject!!.hasObservers() eq false }
             "unsubscribe from bS" o { rxMockB.subject!!.hasObservers() eq false }
         }
+    }
+}
+
+private fun onErrorTests(rxMockA: RxMockObservable0<String>, rxMockB: RxMockObservable0<Int>, resultT: TestObserver<AB<String, Int>>) {
+    "On aS error" o {
+        val error = RuntimeException("aS error")
+        rxMockA.onError(error)
+
+        "got aS error result" o { resultT.assertError(error) }
+        "unsubscribe from bS" o { rxMockB.subject!!.hasObservers() eq false }
+    }
+
+    "On bS error" o {
+        val error = RuntimeException("bS error")
+        rxMockB.onError(error)
+
+        "got bS error result" o { resultT.assertError(error) }
+        "unsubscribe from aS" o { rxMockA.subject!!.hasObservers() eq false }
     }
 }
