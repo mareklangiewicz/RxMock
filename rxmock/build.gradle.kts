@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.dsl.*
 import org.jetbrains.kotlin.gradle.plugin.*
 import pl.mareklangiewicz.defaults.*
 import pl.mareklangiewicz.deps.*
-import pl.mareklangiewicz.utils.*
 
 plugins {
     kotlin("multiplatform")
@@ -17,11 +16,13 @@ defaultBuildTemplateForMppLib(
 )
 
 kotlin {
+    @Suppress("UNUSED_VARIABLE")
     sourceSets {
         val jvmMain by getting {
             dependencies {
                 implementation(deps.rxjava3)
                 api(deps.tuplek)
+                api(deps.junit5) // for asserts in jvmMain
             }
         }
     }

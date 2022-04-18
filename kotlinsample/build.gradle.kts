@@ -14,8 +14,6 @@ dependencies {
     implementation(deps.rxjava3)
     implementation(deps.rxrelay)
     implementation(deps.abcdk)
-    testImplementation(deps.junit4)
-    testImplementation(deps.uspek)
     testImplementation(project(":rxmock"))
 }
 

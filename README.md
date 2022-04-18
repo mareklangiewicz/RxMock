@@ -42,17 +42,3 @@ Tiny library for mocking RxJava calls.
 
 Full examples are available in the ```kotlinsample``` directory
 
-[![](https://jitpack.io/v/langara/RxMock.svg)](https://jitpack.io/#langara/RxMock)
-
-### Building with JitPack
-```gradle
-    repositories {
-        maven { url "https://jitpack.io" }
-    }
-   
-    dependencies {
-        testImplementation 'com.github.langara:RxMock:master-SNAPSHOT'
-    }
-```
-
-details: https://jitpack.io/#langara/RxMock
