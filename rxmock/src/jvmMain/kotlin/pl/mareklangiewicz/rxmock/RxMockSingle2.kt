@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.SingleSubject
 
-class RxMockSingle2<A1, A2, T>(var invocationCheck: (A1, A2) -> Boolean = { _, _ -> true })
+class RxMockSingle2<A1, A2, T: Any>(var invocationCheck: (A1, A2) -> Boolean = { _, _ -> true })
     : SingleObserver<T>, Consumer<T>, (A1, A2) -> Single<T> {
 
     constructor(vararg allowedArgs: Pair<A1, A2>) : this({ a1, a2 -> a1 to a2 in allowedArgs })

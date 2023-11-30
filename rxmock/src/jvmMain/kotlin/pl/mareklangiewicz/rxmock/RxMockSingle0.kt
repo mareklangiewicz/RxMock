@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.SingleSubject
 
-class RxMockSingle0<T>(var invocationCheck: () -> Boolean = { true })
+class RxMockSingle0<T: Any>(var invocationCheck: () -> Boolean = { true })
     : SingleObserver<T>, Consumer<T>, () -> Single<T> {
 
     var invocations = 0

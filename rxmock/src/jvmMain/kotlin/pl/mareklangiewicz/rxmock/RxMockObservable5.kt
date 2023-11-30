@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
 import pl.mareklangiewicz.tuplek.Jackson
 
-class RxMockObservable5<A1, A2, A3, A4, A5, T>(var invocationCheck: (A1, A2, A3, A4, A5) -> Boolean = { _, _, _, _, _ -> true }) : Observer<T>, Consumer<T>, (A1, A2, A3, A4, A5) -> Observable<T> {
+class RxMockObservable5<A1, A2, A3, A4, A5, T: Any>(var invocationCheck: (A1, A2, A3, A4, A5) -> Boolean = { _, _, _, _, _ -> true }) : Observer<T>, Consumer<T>, (A1, A2, A3, A4, A5) -> Observable<T> {
 
     constructor(vararg allowedArgs: Jackson<A1, A2, A3, A4, A5>) : this({ a1, a2, a3, a4, a5 -> Jackson(a1, a2, a3, a4, a5) in allowedArgs })
 

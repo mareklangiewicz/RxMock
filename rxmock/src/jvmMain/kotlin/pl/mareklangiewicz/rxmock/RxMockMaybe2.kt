@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.MaybeSubject
 
-class RxMockMaybe2<A1, A2, T>(var invocationCheck: (A1, A2) -> Boolean = { _, _ -> true })
+class RxMockMaybe2<A1, A2, T: Any>(var invocationCheck: (A1, A2) -> Boolean = { _, _ -> true })
     : MaybeObserver<T>, Consumer<T>, (A1, A2) -> Maybe<T> {
 
     constructor(vararg allowedArgs: Pair<A1, A2>) : this({ a1, a2 -> a1 to a2 in allowedArgs })

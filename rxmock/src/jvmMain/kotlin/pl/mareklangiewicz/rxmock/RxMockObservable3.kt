@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
 
-class RxMockObservable3<A1, A2, A3, T>(var invocationCheck: (A1, A2, A3) -> Boolean = { _, _, _ -> true })
+class RxMockObservable3<A1, A2, A3, T: Any>(var invocationCheck: (A1, A2, A3) -> Boolean = { _, _, _ -> true })
     : Observer<T>, Consumer<T>, (A1, A2, A3) -> Observable<T> {
 
     constructor(vararg allowedArgs: Triple<A1, A2, A3>) : this({ a1, a2, a3 -> Triple(a1, a2, a3) in allowedArgs })

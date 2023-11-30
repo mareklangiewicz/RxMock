@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
 
-class RxMockObservable0<T>(var invocationCheck: () -> Boolean = { true })
+class RxMockObservable0<T: Any>(var invocationCheck: () -> Boolean = { true })
     : Observer<T>, Consumer<T>, () -> Observable<T> {
 
     var invocations = 0

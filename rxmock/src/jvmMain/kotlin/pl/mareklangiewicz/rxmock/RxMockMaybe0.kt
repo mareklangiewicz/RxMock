@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.MaybeSubject
 
-class RxMockMaybe0<T>(var invocationCheck: () -> Boolean = { true })
+class RxMockMaybe0<T: Any>(var invocationCheck: () -> Boolean = { true })
     : MaybeObserver<T>, Consumer<T>, () -> Maybe<T> {
 
     var invocations = 0

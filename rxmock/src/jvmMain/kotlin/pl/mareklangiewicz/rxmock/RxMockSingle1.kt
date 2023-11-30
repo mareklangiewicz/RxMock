@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.subjects.SingleSubject
 
-class RxMockSingle1<A, T>(var invocationCheck: (A) -> Boolean = { true })
+class RxMockSingle1<A, T: Any>(var invocationCheck: (A) -> Boolean = { true })
     : SingleObserver<T>, Consumer<T>, (A) -> Single<T> {
 
     constructor(vararg allowedArgs: A) : this({ it in allowedArgs })

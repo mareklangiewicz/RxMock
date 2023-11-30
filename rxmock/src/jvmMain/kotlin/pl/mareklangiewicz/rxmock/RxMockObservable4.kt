@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
 import pl.mareklangiewicz.tuplek.Quad
 
-class RxMockObservable4<A1, A2, A3, A4, T>(var invocationCheck: (A1, A2, A3, A4) -> Boolean = { _, _, _, _ -> true }) : Observer<T>, Consumer<T>, (A1, A2, A3, A4) -> Observable<T> {
+class RxMockObservable4<A1, A2, A3, A4, T: Any>(var invocationCheck: (A1, A2, A3, A4) -> Boolean = { _, _, _, _ -> true }) : Observer<T>, Consumer<T>, (A1, A2, A3, A4) -> Observable<T> {
 
     constructor(vararg allowedArgs: Quad<A1, A2, A3, A4>) : this({ a1, a2, a3, a4 -> Quad(a1, a2, a3, a4) in allowedArgs })
 
