@@ -1,17 +1,15 @@
-@file:Suppress("UnstableApiUsage")
-
-import okio.Path.Companion.toOkioPath
-import pl.mareklangiewicz.evts.*
-
-gradle.logSomeEventsToFile(rootProject.projectDir.toOkioPath() / "my.gradle.log")
-
 
 pluginManagement {
-    includeBuild("../deps.kt")
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
 }
 
 plugins {
-    id("pl.mareklangiewicz.deps.settings")
+    id("pl.mareklangiewicz.deps.settings") version "0.2.61" // https://plugins.gradle.org/search?term=mareklangiewicz
+    id("com.gradle.enterprise") version "3.15.1" // https://docs.gradle.com/enterprise/gradle-plugin/
 }
 
 rootProject.name = "RxMock"
