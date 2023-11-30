@@ -34,7 +34,7 @@ infix fun <T> TestObserver<*>.hasNowType(predicate: T.() -> Boolean) {
 }
 
 
-infix fun <T> Consumer<T>.put(value: T) = accept(value)
+infix fun <T: Any> Consumer<T>.put(value: T) = accept(value)
 
 infix fun <T> Collection<T>.hasNo(t: T) = assertEquals(0, count { it == t })
 
