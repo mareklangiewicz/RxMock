@@ -5,6 +5,9 @@ import org.junit.jupiter.api.TestFactory
 import pl.mareklangiewicz.abcdk.AB
 import pl.mareklangiewicz.uspek.*
 
+
+infix fun <T> T.eq(exp: Any?) = check(this == exp) { "$this is not equal to $exp" }
+
 class MergeAbcdKTest {
 
     @TestFactory
