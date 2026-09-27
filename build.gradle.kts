@@ -1,37 +1,23 @@
+
+// region [[Basic Root Build Imports and Plugs]]
+
 import pl.mareklangiewicz.defaults.*
-import pl.mareklangiewicz.deps.*
 import pl.mareklangiewicz.utils.*
+import pl.mareklangiewicz.deps.*
+import pl.mareklangiewicz.templatefun.*
 
 plugins {
-    plug(plugs.NexusPublish)
-    plug(plugs.KotlinMulti) apply false
-    plug(plugs.KotlinJvm) apply false
+  plug(plugs.TemplateFun) apply false
+  plug(plugs.KotlinMulti) apply false
+  plug(plugs.KotlinJvm) apply false
+
+  // Resolve the publish plugin ONCE here, with its version. Without this the only source of
+  // it is the templatefun plugin's own classpath (templatefun depends on it), which Gradle sees as
+  // "unknown version" -- and then a versioned request in a subproject cannot be checked
+  // against it. template-full and template-andro declare it here for the same reason.
+  plug(plugs.VannikPublish) apply false
 }
 
-defaultBuildTemplateForRootProject(
-    myLibDetails(
-        name = "RxMock",
-        description = "Tiny library for mocking RxJava calls.",
-        githubUrl = "https://github.com/mareklangiewicz/RxMock",
-        version = Ver(0, 0, 25),
-        // https://central.sonatype.com/artifact/pl.mareklangiewicz/rxmock/versions
-        // https://github.com/mareklangiewicz/RxMock/releases
-        settings = LibSettings(
-            withJs = false,
-            withNativeLinux64 = false,
-            compose = null,
-            withSonatypeOssPublishing = true,
-        ),
-    ),
-)
+// endregion [[Basic Root Build Imports and Plugs]]
 
-// region [[Root Build Template]]
-
-fun Project.defaultBuildTemplateForRootProject(details: LibDetails? = null) {
-  details?.let {
-    rootExtLibDetails = it
-    defaultGroupAndVerAndDescription(it)
-  }
-}
-
-// endregion [[Root Build Template]]
+defaultGroupAndVerAndDescription(gradle.extLib)
